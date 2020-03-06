@@ -30,7 +30,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     private Context mContext;
 
     public RecyclerViewAdapter(Context context, ArrayList<String> imageNames, ArrayList<String> images ) {
-        mImageNames = imageNames;
+        mImageNames = images;
         mImages = images;
         mContext = context;
     }
