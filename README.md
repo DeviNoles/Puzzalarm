@@ -3,7 +3,7 @@
 - [ ] Implement puzzle.
 - [ ] Implement calendar.
 - [ ] Implement Dashboard.
-- [ ] Implement user accounts.
+- [ ] Implement user accounts. AWS Amplify?
 - [ ] Sync alarms to accounts.
 - [ ] Add more games
 - [ ] *Implement weather on dashboard*
