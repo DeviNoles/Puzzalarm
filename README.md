@@ -1,11 +1,12 @@
 # Puzzalarm
-- [ ] Add alarms into listview on alarms page
+- [ ] Add alarms into recyclerview on alarms page
+- [ ] Sort alarms in recyclerview
 - [ ] Puzzles.
-- [ ] Calendar Sync.
-- [ ] Dashboard.
+- [ ] Calendar Sync
+- [ ] Dashboard
 - [ ] Settings
 - [ ] User accounts. AWS Amplify?
-- [ ] Sync alarms to accounts.
+- [ ] Sync alarms to accounts
 - [ ] Add more games
 - [ ] *Weather on dashboard*
 - [ ] *Custom user music*
