@@ -1,7 +1,9 @@
-package com.cop4020.puzzalarm;
+package com.cop4020.puzzalarm.ui.alarms;
+
 import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
+import android.util.Pair;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,27 +13,21 @@ import android.widget.Toast;
 
 import androidx.recyclerview.widget.RecyclerView;
 
-
 import com.cop4020.puzzalarm.MainActivity;
 import com.cop4020.puzzalarm.R;
 
-import org.w3c.dom.Text;
-
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder>{
 
     private static final String TAG = "RecyclerViewAdapter";
-
-    private ArrayList<String> mImageNames = new ArrayList<>();
-    private ArrayList<String> mImages = new ArrayList<>();
+   // private ArrayList<String> mImages = new ArrayList<>();
+    private ArrayList<Pair <Integer,Integer> > alarmList;
     private Context mContext;
 
-    public RecyclerViewAdapter(Context context, ArrayList<String> imageNames, ArrayList<String> images ) {
-        mImageNames = images;
-        mImages = images;
+    public RecyclerViewAdapter(Context context, ArrayList<Pair <Integer,Integer>> times ) {
+        alarmList = times;
         mContext = context;
     }
 
@@ -45,55 +41,41 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     @Override
     public void onBindViewHolder(ViewHolder holder, final int position) {
         Log.d(TAG, "onBindViewHolder: called.");
+        if(alarmList.get(position).first>12){
+            holder.alarmTime.setText("" + (alarmList.get(position).first-12) + ":" + alarmList.get(position).second);
+        }
+        else{
+            holder.alarmTime.setText("" + alarmList.get(position).first + ":" + alarmList.get(position).second);
 
-
-
-        holder.imageName.setText(mImageNames.get(position));
-
+        }
         holder.parentLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Log.d(TAG, "onClick: clicked on: " + mImageNames.get(position));
+                Log.d(TAG, "onClick: clicked on: " + alarmList.get(position).first + alarmList.get(position).second);
 
-                Toast.makeText(mContext, mImageNames.get(position), Toast.LENGTH_SHORT).show();
+                Toast.makeText(mContext, + alarmList.get(position).first + ":" + alarmList.get(position).second, Toast.LENGTH_SHORT).show();
 
                 Intent intent = new Intent(mContext, MainActivity.class);
-                intent.putExtra("image_url", mImages.get(position));
-                intent.putExtra("image_name", mImageNames.get(position));
-                mContext.startActivity(intent);
+             //   intent.putExtra("image_url", mImages.get(position));
+                intent.putExtra("Time", alarmList.get(position).first + alarmList.get(position).second);
+              //  mContext.startActivity(intent);
             }
         });
     }
 
     @Override
     public int getItemCount() {
-        return mImageNames.size();
+        return alarmList.size();
     }
-
 
     public class ViewHolder extends RecyclerView.ViewHolder{
 
-        TextView imageName;
+        TextView alarmTime;
         RelativeLayout parentLayout;
-
         public ViewHolder(View itemView) {
             super(itemView);
-            imageName = itemView.findViewById(R.id.image_name);
+            alarmTime = itemView.findViewById(R.id.alarmTime);
             parentLayout = itemView.findViewById(R.id.parentLayout);
         }
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
