@@ -4,6 +4,7 @@
 - [ ] Puzzles.
 - [ ] Calendar Sync
 - [ ] Dashboard
+- [ ] Persistent alarms
 - [ ] Settings
 - [ ] User accounts. AWS Amplify?
 - [ ] Sync alarms to accounts
