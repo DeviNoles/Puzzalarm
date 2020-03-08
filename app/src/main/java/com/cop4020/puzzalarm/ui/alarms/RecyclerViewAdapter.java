@@ -41,13 +41,21 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     @Override
     public void onBindViewHolder(ViewHolder holder, final int position) {
         Log.d(TAG, "onBindViewHolder: called.");
-        if(alarmList.get(position).first>12){
-            holder.alarmTime.setText("" + (alarmList.get(position).first-12) + ":" + alarmList.get(position).second);
+        Integer hr = alarmList.get(position).first;
+        Integer mn = alarmList.get(position).second;
+        if(hr>12){
+            hr = hr-12;
         }
-        else{
-            holder.alarmTime.setText("" + alarmList.get(position).first + ":" + alarmList.get(position).second);
+        if(mn<10){
+            String min = "0";
+            min= min + mn;
+            holder.alarmTime.setText("" + hr + ":" + min);
 
         }
+        else{
+            holder.alarmTime.setText("" + hr + ":" + mn);
+        }
+
         holder.parentLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
