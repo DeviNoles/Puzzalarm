@@ -1,6 +1,7 @@
 package com.cop4020.puzzalarm.ui.alarms;
 
 import android.app.TimePickerDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.util.Pair;
@@ -15,6 +16,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.cop4020.puzzalarm.R;
+import com.cop4020.puzzalarm.services.AlarmManager;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -37,7 +39,7 @@ public class AlarmsFragment extends Fragment {
         com.google.android.material.floatingactionbutton.FloatingActionButton fabbtn = root.findViewById(R.id.floating_action_button);
         RecyclerView recyclerView = root.findViewById(R.id.my_recycler_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        final RecyclerViewAdapter adapter = new RecyclerViewAdapter(getContext(), times);
+        final RecyclerViewAdapter adapter = new RecyclerViewAdapter(getActivity(), times);
 
         recyclerView.setAdapter(adapter);
 
@@ -59,6 +61,13 @@ public class AlarmsFragment extends Fragment {
                         Log.d("ADebugTag", "Value: " + hourOfDay + ":" + minute);
                         times.add(Pair.create(hourOfDay, minute));
                         adapter.notifyDataSetChanged();
+                        Intent intent = new Intent(getContext(), AlarmManager.class);
+                        intent.putExtra("hour",Integer.toString(hourOfDay));
+                        intent.putExtra("minute",Integer.toString(minute));
+
+
+
+                        getContext().startService(intent);
                     }
                 };
                 final Calendar myCalender = Calendar.getInstance();
@@ -67,6 +76,11 @@ public class AlarmsFragment extends Fragment {
                 TimePickerDialog timePickerDialog = new TimePickerDialog(getActivity(), android.R.style.Theme_Holo_Light_Dialog_NoActionBar, myTimeListener, hour, minute, false);
                 timePickerDialog.setTitle("Set New Alarm:");
                 timePickerDialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
+
+
+            //    AlarmManager alarmManager = new AlarmManager("alarmManager", hour, minute);
+
+                //  mContext.startService(alarmManager);
                 timePickerDialog.show();
 
 

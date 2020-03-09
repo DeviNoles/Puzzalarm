@@ -13,8 +13,8 @@ import android.widget.Toast;
 
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.cop4020.puzzalarm.MainActivity;
 import com.cop4020.puzzalarm.R;
+import com.cop4020.puzzalarm.services.AlarmManager;
 
 import java.util.ArrayList;
 
@@ -39,7 +39,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     }
 
     @Override
-    public void onBindViewHolder(ViewHolder holder, final int position) {
+    public void onBindViewHolder(final ViewHolder holder, final int position) {
         Log.d(TAG, "onBindViewHolder: called.");
         Integer hr = alarmList.get(position).first;
         Integer mn = alarmList.get(position).second;
@@ -62,13 +62,15 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                 Log.d(TAG, "onClick: clicked on: " + alarmList.get(position).first + alarmList.get(position).second);
 
                 Toast.makeText(mContext, + alarmList.get(position).first + ":" + alarmList.get(position).second, Toast.LENGTH_SHORT).show();
-
-                Intent intent = new Intent(mContext, MainActivity.class);
-             //   intent.putExtra("image_url", mImages.get(position));
-                intent.putExtra("Time", alarmList.get(position).first + alarmList.get(position).second);
-              //  mContext.startActivity(intent);
             }
         });
+    }
+
+    public void callIntent() {
+        Intent intent = new Intent(mContext, AlarmManager.class);
+
+
+        mContext.startService(intent);
     }
 
     @Override
