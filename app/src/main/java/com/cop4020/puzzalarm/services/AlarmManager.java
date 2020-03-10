@@ -11,7 +11,6 @@ import java.util.ArrayList;
 import java.util.Calendar;
 
 public class AlarmManager extends IntentService {
-    private ArrayList<Intent> serviceList;
     Integer hour;
     Integer minute;
     private static final String TAG = "AlarmManager";
@@ -74,9 +73,6 @@ public class AlarmManager extends IntentService {
 
             }
         }).start();
-
-
-
       //  Toast.makeText(getApplicationContext(), this.hour + ":" + this.minute, Toast.LENGTH_LONG).show();
        // Toast.makeText(getApplicationContext(), + this.hour + ":" + this.minute, Toast.LENGTH_LONG).show();
 
