@@ -20,6 +20,13 @@
 
         </activity>
 
+        <activity
+            android:name=".services.alarmActive"
+            android:label="@string/game">
+
+
+        </activity>
+
 
         <service
             android:name=".services.AlarmManager"

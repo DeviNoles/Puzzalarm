@@ -32,6 +32,11 @@ public class AlarmManager extends IntentService {
         Log.d(TAG, "MyIntentService onCreate() method is invoked.");
     }
 
+    private void timeFound(){
+        Intent dialogIntent = new Intent(this, alarmActive.class);
+        dialogIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        getApplicationContext().startActivity(dialogIntent);
+    }
 
     @Override
     protected void onHandleIntent(@Nullable Intent intent) {
@@ -49,7 +54,7 @@ public class AlarmManager extends IntentService {
                     int currentHour = myCalender.get(Calendar.HOUR_OF_DAY);
                     int currentMinute = myCalender.get(Calendar.MINUTE);
                     if (currentHour == hour && currentMinute == minute) {
-                        Log.d(TAG, "ALARM RINGING ");
+                        timeFound();
                        break;
 
                     } else {
