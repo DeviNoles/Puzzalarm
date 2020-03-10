@@ -53,6 +53,9 @@ public class AlarmManager extends IntentService {
                     Calendar myCalender = Calendar.getInstance();
                     int currentHour = myCalender.get(Calendar.HOUR_OF_DAY);
                     int currentMinute = myCalender.get(Calendar.MINUTE);
+                    if(currentHour>12){
+                        currentHour=currentHour-12;
+                    }
                     if (currentHour == hour && currentMinute == minute) {
                         timeFound();
                        break;
