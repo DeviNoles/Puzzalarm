@@ -3,4 +3,6 @@
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_alarms">Alarms</string>
+    <string name="alarm_manager">Alarm Manager</string>
+    <string name="game">Game</string>
 </resources>
