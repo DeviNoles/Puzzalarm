@@ -10,6 +10,7 @@
 - [ ] User accounts. AWS Amplify?/Firebase?
 - [ ] Sync alarms to accounts
 - [ ] Add more games
+- [ ] Nice README, documentation, and Github labels
 - [ ] *Weather on dashboard*
 - [ ] *CI/CD Pipeline*
 - [ ] *Custom user music*
