@@ -1,10 +1,10 @@
 # Puzzalarm
 - [X] Add alarms into recyclerview on alarms page
+- [X] Persistent alarms
 - [ ] Sort alarms in recyclerview
 - [ ] Puzzles.
 - [ ] Calendar Sync
 - [ ] Dashboard
-- [ ] Persistent alarms
 - [ ] Settings
 - [ ] Testing
 - [ ] User accounts. AWS Amplify?/Firebase?
