@@ -9,7 +9,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -24,6 +23,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     private static final String TAG = "RecyclerViewAdapter";
    // private ArrayList<String> mImages = new ArrayList<>();
     private ArrayList<Pair <Integer,Integer> > alarmList;
+    private ArrayList<Intent> serviceList = new ArrayList<>();
     private Context mContext;
 
     public RecyclerViewAdapter(Context context, ArrayList<Pair <Integer,Integer>> times ) {
@@ -61,16 +61,21 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             public void onClick(View view) {
                 Log.d(TAG, "onClick: clicked on: " + alarmList.get(position).first + alarmList.get(position).second);
 
-                Toast.makeText(mContext, + alarmList.get(position).first + ":" + alarmList.get(position).second, Toast.LENGTH_SHORT).show();
+           //     Toast.makeText(mContext, + alarmList.get(position).first + ":" + alarmList.get(position).second, Toast.LENGTH_SHORT).show();
             }
         });
+        Log.d(TAG, "HERERERE");
+        callIntent(hr, mn);
+
+
     }
 
-    public void callIntent() {
-        Intent intent = new Intent(mContext, AlarmManager.class);
-
-
-        mContext.startService(intent);
+    public void callIntent(int hour, int minute) {
+        Intent intent = new Intent(mContext.getApplicationContext(), AlarmManager.class);
+        intent.putExtra("hour",hour);
+        intent.putExtra("minute",minute);
+        serviceList.add(intent);
+        mContext.getApplicationContext().startService(intent);
     }
 
     @Override
