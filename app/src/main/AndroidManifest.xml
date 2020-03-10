@@ -17,7 +17,21 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
         </activity>
+
+        <activity
+            android:name=".services.alarmActive"
+            android:label="@string/game">
+
+
+        </activity>
+
+
+        <service
+            android:name=".services.AlarmManager"
+            android:exported="false"/>
+
     </application>
 
 </manifest>
