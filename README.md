@@ -1,6 +1,7 @@
 # Puzzalarm
 - [X] Add alarms into recyclerview on alarms page
 - [X] Persistent alarms
+- [ ] UI
 - [ ] Sort alarms in recyclerview
 - [ ] Puzzles.
 - [ ] Calendar Sync
