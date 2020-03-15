@@ -1,4 +1,8 @@
 # Puzzalarm
+
+COP4020 - Software Engineering 
+Semester Project
+
 - [X] Add alarms into recyclerview on alarms page
 - [X] Persistent alarms
 - [X] Puzzles
