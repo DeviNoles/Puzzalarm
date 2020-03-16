@@ -8,6 +8,7 @@ Semester Project
 - [X] Persistent alarms
 - [X] Puzzles
 - [ ] UI
+- [ ] Disable back button
 - [ ] Sort alarms in recyclerview
 - [ ] Calendar Sync
 - [ ] Dashboard
