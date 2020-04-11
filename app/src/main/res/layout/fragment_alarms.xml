@@ -5,12 +5,20 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
     <!-- A RecyclerView with some commonly used attributes -->
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Alarms"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="50dp"/>
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/my_recycler_view"
+        android:layout_marginTop="50dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:scrollbars="vertical"
-        tools:itemCount="5" />
+        android:scrollbars="vertical" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/floating_action_button"
