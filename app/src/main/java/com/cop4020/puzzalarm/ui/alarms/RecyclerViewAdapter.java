@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.cop4020.puzzalarm.R;
@@ -86,7 +87,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     public class ViewHolder extends RecyclerView.ViewHolder{
 
         TextView alarmTime;
-        RelativeLayout parentLayout;
+        ConstraintLayout parentLayout;
         public ViewHolder(View itemView) {
             super(itemView);
             alarmTime = itemView.findViewById(R.id.alarmTime);
