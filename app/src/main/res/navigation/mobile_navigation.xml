@@ -13,6 +13,11 @@
     <fragment
         android:id="@+id/navigation_home"
         android:name="com.cop4020.puzzalarm.ui.home.HomeFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:textAlignment="center"
+        android:gravity="center"
+        android:layout_gravity="center"
         android:label="@string/title_home"
         tools:layout="@layout/fragment_home" />
 

@@ -5,7 +5,7 @@ COP4020 - Software Engineering
 Semester Project
 
 - [X] Add alarms into recyclerview on alarms page
-- [X] Persistent alarms
+- [ ] Persistent alarms
 - [X] Puzzles
 - [ ] UI
 - [ ] Disable back button
