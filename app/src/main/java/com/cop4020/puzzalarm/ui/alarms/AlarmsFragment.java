@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -20,19 +21,23 @@ import java.util.ArrayList;
 import java.util.Calendar;
 
 public class AlarmsFragment extends Fragment {
-
-    private AlarmsViewModel alarmViewModel;
+    private static final String TAG = "AlarmsFragment";
+    //private AlarmsViewModel alarmViewModel;
     private ArrayList<Pair <Integer,Integer> > times = new ArrayList<>();
 
+    // Handle alarm data
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
 
+        Log.d(TAG, "Main Activity's At it AGAIN.\n");
+    }
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-
-
-        alarmViewModel =
-                ViewModelProviders.of(this).get(AlarmsViewModel.class);
         View root = inflater.inflate(R.layout.fragment_alarms, container, false);
+
+        //alarmViewModel = ViewModelProviders.of(this).get(AlarmsViewModel.class);
 
         com.google.android.material.floatingactionbutton.FloatingActionButton fabbtn = root.findViewById(R.id.floating_action_button);
         RecyclerView recyclerView = root.findViewById(R.id.my_recycler_view);
