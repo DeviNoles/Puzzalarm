@@ -36,9 +36,9 @@ public class alarmActive extends AppCompatActivity {
         TextView sign= findViewById(R.id.sign);
 
         Random r = new Random();
-        num1.setText(String.valueOf(r.nextInt(100))+1);
+        num1.setText(String.valueOf(r.nextInt(5))+1);
         r = new Random();
-        num2.setText(String.valueOf(r.nextInt(100))+1);
+        num2.setText(String.valueOf(r.nextInt(5))+1);
         int tnum1 = Integer.parseInt(num1.getText().toString());
         int tnum2 = Integer.parseInt(num2.getText().toString());
         r = new Random();
