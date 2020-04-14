@@ -13,19 +13,22 @@
 
     <TextView
         android:id="@+id/alarmTime"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="164dp"
+        android:layout_height="66dp"
         android:ems="10"
         android:inputType="time"
         android:textColor="#ffffff"
-        android:textSize="48dp" />
+        android:textSize="48dp"
+        tools:layout_editor_absoluteX="71dp"
+        tools:layout_editor_absoluteY="4dp" />
 
     <Switch
         android:id="@+id/alarmSwitch"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="55dp" />
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="24dp"
+        app:layout_constraintStart_toEndOf="@+id/alarmTime"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
