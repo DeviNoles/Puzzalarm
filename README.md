@@ -2,9 +2,9 @@
 - [X] Add alarms into recyclerview on alarms page
 - [ ] Persistent alarms
 - [ ] Puzzles
-- [ ] UI
+- [X] UI
 - [ ] Sort alarms in recyclerview
-- [ ] Add 0 before <10 time
+- [X] Add 0 before <10 time
 - [ ] Remove alarms
 - [ ] Dashboard
 - [ ] Add more games
