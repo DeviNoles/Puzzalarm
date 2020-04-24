@@ -4,6 +4,9 @@
     <item
         android:id="@+id/navigation_home"
         android:icon="@drawable/ic_home_black_24dp"
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+
         android:title="@string/title_home" />
 
 

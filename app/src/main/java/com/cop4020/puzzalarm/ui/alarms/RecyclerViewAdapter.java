@@ -6,10 +6,13 @@ import android.util.Log;
 import android.util.Pair;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.CompoundButton;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
+import android.widget.Switch;
 import android.widget.TextView;
 
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.cop4020.puzzalarm.R;
@@ -43,6 +46,10 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         Log.d(TAG, "onBindViewHolder: called.");
         Integer hr = alarmList.get(position).first;
         Integer mn = alarmList.get(position).second;
+        if(holder.alarmSwitch.isChecked()){
+            holder.parentLayout.setBackground(mContext.getResources().getDrawable(R.drawable.layout_bg, null));
+
+        }
         if(hr>12){
             hr = hr-12;
         }
@@ -61,9 +68,24 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             public void onClick(View view) {
                 Log.d(TAG, "onClick: clicked on: " + alarmList.get(position).first + alarmList.get(position).second);
 
+
            //     Toast.makeText(mContext, + alarmList.get(position).first + ":" + alarmList.get(position).second, Toast.LENGTH_SHORT).show();
             }
+
         });
+        holder.alarmSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                // do something, the isChecked will be
+                // true if the switch is in the On position
+                if(holder.alarmSwitch.isChecked()==Boolean.TRUE){
+                    holder.parentLayout.setBackground(mContext.getResources().getDrawable(R.drawable.layout_bg, null));
+                } else if (holder.alarmSwitch.isChecked()==Boolean.FALSE) {
+                    holder.parentLayout.setBackground(mContext.getResources().getDrawable(R.drawable.layout_bg_off, null));
+
+                }
+            }
+        });
+
         Log.d(TAG, "HERERERE");
         callIntent(hr, mn);
 
@@ -86,11 +108,14 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     public class ViewHolder extends RecyclerView.ViewHolder{
 
         TextView alarmTime;
-        RelativeLayout parentLayout;
+        ConstraintLayout parentLayout;
+        Switch alarmSwitch;
         public ViewHolder(View itemView) {
             super(itemView);
             alarmTime = itemView.findViewById(R.id.alarmTime);
             parentLayout = itemView.findViewById(R.id.parentLayout);
+            alarmSwitch = itemView.findViewById(R.id.alarmSwitch);
+
         }
     }
 }
