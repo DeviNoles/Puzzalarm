@@ -28,10 +28,12 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     private ArrayList<Pair <Integer,Integer> > alarmList;
     private ArrayList<Intent> serviceList = new ArrayList<>();
     private Context mContext;
+    private AlarmsInternalStorage alarmStore;
 
     public RecyclerViewAdapter(Context context, ArrayList<Pair <Integer,Integer>> times ) {
         alarmList = times;
         mContext = context;
+        alarmStore = new AlarmsInternalStorage(mContext);
     }
 
     @Override
@@ -44,10 +46,14 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     @Override
     public void onBindViewHolder(final ViewHolder holder, final int position) {
         Log.d(TAG, "onBindViewHolder: called.");
+
         Integer hr = alarmList.get(position).first;
         Integer mn = alarmList.get(position).second;
         if(holder.alarmSwitch.isChecked()){
             holder.parentLayout.setBackground(mContext.getResources().getDrawable(R.drawable.layout_bg, null));
+        }
+        if(!holder.alarmSwitch.isChecked()){
+            holder.parentLayout.setBackground(mContext.getResources().getDrawable(R.drawable.layout_bg_off, null));
         }
         if(hr>12){
             hr = hr-12;
@@ -77,16 +83,34 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         });
         holder.alarmSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                // making variables to update internal storage
+                String temp = holder.alarmTime.getText().toString();
+                String temp_split[] = temp.split(":");
+                int h = Integer.valueOf(temp_split[0]);
+                int m = Integer.valueOf(temp_split[1]);
+
                 // do something, the isChecked will be
                 // true if the switch is in the On position
                 if(holder.alarmSwitch.isChecked()==Boolean.TRUE){
                     holder.parentLayout.setBackground(mContext.getResources().getDrawable(R.drawable.layout_bg, null));
+
+                    // Update checks internal storage
+                    alarmStore.update(h, m, true);
+
                 } else if (holder.alarmSwitch.isChecked()==Boolean.FALSE) {
                     holder.parentLayout.setBackground(mContext.getResources().getDrawable(R.drawable.layout_bg_off, null));
 
+                    // Update checks internal storage
+                    alarmStore.update(h, m, false);
                 }
             }
         });
+
+        // add alarm to internal storage
+        alarmStore.add(hr, mn, true);
+        // Updating switches
+        holder.alarmSwitch.setChecked(alarmStore.getSt_checks().get(position));
+        Log.d(TAG, "onBindViewHolder: " + alarmStore.getSt_checks().get(position));
 
         Log.d(TAG, "HERERERE");
         callIntent(hr, mn);
@@ -117,7 +141,6 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             alarmTime = itemView.findViewById(R.id.alarmTime);
             parentLayout = itemView.findViewById(R.id.parentLayout);
             alarmSwitch = itemView.findViewById(R.id.alarmSwitch);
-
         }
     }
 }

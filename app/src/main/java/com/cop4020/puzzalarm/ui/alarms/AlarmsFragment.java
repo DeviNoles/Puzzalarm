@@ -8,6 +8,7 @@ import android.util.Pair;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Switch;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -20,11 +21,15 @@ import com.cop4020.puzzalarm.R;
 import java.util.ArrayList;
 import java.util.Calendar;
 
+import static androidx.constraintlayout.widget.Constraints.TAG;
+
 public class AlarmsFragment extends Fragment {
+    private static final String TAG = "AlarmsFragment";
 
     private AlarmsViewModel alarmViewModel;
     private ArrayList<Pair <Integer,Integer> > times = new ArrayList<>();
-
+    private ArrayList<Boolean> checks = new ArrayList<>();
+    private AlarmsInternalStorage alarmStore;
 
 
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -40,7 +45,8 @@ public class AlarmsFragment extends Fragment {
         RecyclerView recyclerView = root.findViewById(R.id.my_recycler_view);
 
         // Restore alarms
-
+        alarmStore = new AlarmsInternalStorage(getContext());
+        times = alarmStore.getSt_times();
 
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         final RecyclerViewAdapter adapter = new RecyclerViewAdapter(getActivity(), times);
@@ -64,7 +70,6 @@ public class AlarmsFragment extends Fragment {
                         Log.d("ADebugTag", "Value: " + hourOfDay + ":" + minute);
                         times.add(Pair.create(hourOfDay, minute));
                         adapter.notifyDataSetChanged();
-
                     }
                 };
                 final Calendar myCalender = Calendar.getInstance();

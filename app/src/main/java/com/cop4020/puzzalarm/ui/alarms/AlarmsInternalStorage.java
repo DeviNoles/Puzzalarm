@@ -1,6 +1,7 @@
 package com.cop4020.puzzalarm.ui.alarms;
 
 import android.content.Context;
+import android.util.Log;
 import android.util.Pair;
 
 import java.io.BufferedReader;
@@ -15,7 +16,7 @@ public class AlarmsInternalStorage {
     private static final String TAG = "AlarmsInternalStorage";
 
     // ----- member data -----
-    private static final String FILENAME = "alarms.txt";
+    private static final String FILENAME = "/data/data/com.cop4020.puzzalarm/files/alarms.txt";
     private ArrayList<Pair<Integer, Integer> > st_times = new ArrayList<>();
     private ArrayList<Boolean> st_checks = new ArrayList<>();
     private Context context;
@@ -28,7 +29,7 @@ public class AlarmsInternalStorage {
         FileInputStream fis = null;
 
         try {
-            fis = context.openFileInput(FILENAME);
+            fis = new FileInputStream(FILENAME);
             InputStreamReader isr = new InputStreamReader(fis);
             BufferedReader br = new BufferedReader(isr);
             String line;
@@ -75,6 +76,29 @@ public class AlarmsInternalStorage {
         }
     }
 
+    public boolean delete(int hr, int mn){
+        int index = exists(hr, mn);
+        if (index != -1){
+            st_times.remove(index);
+            st_checks.remove(index);
+            write();
+            return true;
+        }
+        else
+            return false;
+    }
+
+    public boolean update(int hr, int mn, Boolean check){
+        int index = exists(hr, mn);
+        if (index != -1){
+            st_checks.set(index, check);
+            write();
+            return true;
+        }
+        else
+            return false;
+    }
+
     public ArrayList< Pair <Integer, Integer> > getSt_times(){
         return st_times;
     }
@@ -111,7 +135,7 @@ public class AlarmsInternalStorage {
         FileOutputStream fos = null;
 
         try {
-            fos = context.openFileOutput(FILENAME, Context.MODE_PRIVATE);
+            fos = new FileOutputStream(FILENAME);
             fos.write(times.getBytes());
         } catch (FileNotFoundException e) {
             e.printStackTrace();
