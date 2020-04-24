@@ -1,7 +1,6 @@
 package com.cop4020.puzzalarm.ui.home;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,17 +15,8 @@ import androidx.lifecycle.ViewModelProviders;
 import com.cop4020.puzzalarm.R;
 
 public class HomeFragment extends Fragment {
-    private static final String TAG = "HomeFragment";
 
     private HomeViewModel homeViewModel;
-
-    // TESTING
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-
-        Log.d(TAG, "Main Activity's At it AGAIN.\n");
-    }
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
