@@ -1,6 +1,7 @@
 package com.cop4020.puzzalarm.ui.alarms;
 
 import android.app.TimePickerDialog;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.util.Pair;
@@ -38,7 +39,7 @@ public class AlarmsFragment extends Fragment {
         RecyclerView recyclerView = root.findViewById(R.id.my_recycler_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         final RecyclerViewAdapter adapter = new RecyclerViewAdapter(getActivity(), times);
-
+        root.setBackgroundColor(Color.WHITE);
         recyclerView.setAdapter(adapter);
 
         fabbtn.setOnClickListener(new View.OnClickListener() {
