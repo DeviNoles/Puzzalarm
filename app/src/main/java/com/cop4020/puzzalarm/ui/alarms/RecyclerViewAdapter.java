@@ -21,7 +21,7 @@ import com.cop4020.puzzalarm.services.AlarmManager;
 import java.util.ArrayList;
 
 
-public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder>{
+public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder> {
 
     private static final String TAG = "RecyclerViewAdapter";
    // private ArrayList<String> mImages = new ArrayList<>();
@@ -48,10 +48,12 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         Integer mn = alarmList.get(position).second;
         if(holder.alarmSwitch.isChecked()){
             holder.parentLayout.setBackground(mContext.getResources().getDrawable(R.drawable.layout_bg, null));
-
         }
         if(hr>12){
             hr = hr-12;
+        }
+        if (hr == 0){
+            hr = 12;
         }
         if(mn<10){
             String min = "0";

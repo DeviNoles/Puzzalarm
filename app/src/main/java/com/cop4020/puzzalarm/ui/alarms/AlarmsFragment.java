@@ -34,12 +34,16 @@ public class AlarmsFragment extends Fragment {
         alarmViewModel =
                 ViewModelProviders.of(this).get(AlarmsViewModel.class);
         View root = inflater.inflate(R.layout.fragment_alarms, container, false);
+        root.setBackgroundColor(Color.WHITE);
 
         com.google.android.material.floatingactionbutton.FloatingActionButton fabbtn = root.findViewById(R.id.floating_action_button);
         RecyclerView recyclerView = root.findViewById(R.id.my_recycler_view);
+
+        // Restore alarms
+
+
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         final RecyclerViewAdapter adapter = new RecyclerViewAdapter(getActivity(), times);
-        root.setBackgroundColor(Color.WHITE);
         recyclerView.setAdapter(adapter);
 
         fabbtn.setOnClickListener(new View.OnClickListener() {
@@ -86,6 +90,4 @@ public class AlarmsFragment extends Fragment {
     private void hideMenu(){
 
     }
-
-
 }
