@@ -66,7 +66,7 @@ public class AlarmManager extends IntentService {
                         Log.d(TAG, "ALARM TIME " + hour + minute);
                         Log.d(TAG, "SYSTEM TIME " +  currentHour + currentMinute);
                         try {
-                            Thread.sleep(1000);
+                            Thread.sleep(2000);
                         } catch (InterruptedException e) {
                             Log.d(TAG, e.getMessage());
                         }
