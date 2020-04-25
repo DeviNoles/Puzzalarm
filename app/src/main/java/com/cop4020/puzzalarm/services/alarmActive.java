@@ -159,4 +159,9 @@ public class alarmActive extends AppCompatActivity {
             }
         });
     }
+
+    @Override
+    public void onBackPressed() {
+        // do nothing (this disables the back button when playing the games)
+    }
 }
