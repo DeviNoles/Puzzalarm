@@ -6,18 +6,22 @@ Semester Project
 
 - [X] Add alarms into recyclerview on alarms page
 - [ ] Persistent alarms
-- [ ] Puzzles
+- [X] Puzzles
 - [X] UI
 - [ ] Disable back button
-- [ ] Sort alarms in recyclerview
+- [X] Sort alarms in recyclerview
 - [X] Add 0 before <10 time
 - [ ] Remove alarms
+- [X] Add more games
+- [X] Nice README, documentation, and Github labels0
+- [ ] Testing
+
+
+Post MVP Objectives
+
 - [ ] Dashboard
-- [ ] Add more games
-- [ ] Nice README, documentation, and Github labels
 - [ ] Calendar Sync
 - [ ] Settings
-- [ ] Testing
 - [ ] User accounts. AWS Amplify?/Firebase?
 - [ ] Sync alarms to accounts
 - [ ] *Weather on dashboard*
