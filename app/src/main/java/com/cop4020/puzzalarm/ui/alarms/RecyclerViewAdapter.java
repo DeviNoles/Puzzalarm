@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.CompoundButton;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.RelativeLayout;
 import android.widget.Switch;
 import android.widget.TextView;
@@ -106,6 +107,18 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             }
         });
 
+        holder.deleteButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int h = alarmList.get(position).first;
+                int m = alarmList.get(position).second;
+                alarmStore.delete(h, m);
+                alarmList.remove(position);
+                notifyItemRemoved(position);
+                notifyItemRangeChanged(position, getItemCount());
+            }
+        });
+
         // add alarm to internal storage
         alarmStore.add(hr, mn, true);
         // Updating switches
@@ -114,8 +127,6 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
         Log.d(TAG, "HERERERE");
         callIntent(hr, mn);
-
-
     }
 
     public void callIntent(int hour, int minute) {
@@ -136,11 +147,14 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         TextView alarmTime;
         ConstraintLayout parentLayout;
         Switch alarmSwitch;
+        ImageButton deleteButton;
+
         public ViewHolder(View itemView) {
             super(itemView);
             alarmTime = itemView.findViewById(R.id.alarmTime);
             parentLayout = itemView.findViewById(R.id.parentLayout);
             alarmSwitch = itemView.findViewById(R.id.alarmSwitch);
+            deleteButton = itemView.findViewById(R.id.deleteButton);
         }
     }
 }
